@@ -1,0 +1,91 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}
+{{ recipe.title }} — Food Planner
+{% endblock %}
+
+{% block content %}
+
+<div class="recipe-page">
+
+    <span class="category">
+        {{ recipe.category.name }}
+    </span>
+
+    <h1>{{ recipe.title }}</h1>
+
+    <p class="page-description">
+        {{ recipe.description }}
+    </p>
+
+    <div class="info">
+        <span>⏱ {{ recipe.cooking_time }} минут</span>
+    </div>
+
+    <div class="nutrition">
+
+        <div>
+            <strong>{{ recipe.calories }}</strong>
+            <br>
+            ккал
+        </div>
+
+        <div>
+            <strong>{{ recipe.protein }} г</strong>
+            <br>
+            белки
+        </div>
+
+        <div>
+            <strong>{{ recipe.fat }} г</strong>
+            <br>
+            жиры
+        </div>
+
+        <div>
+            <strong>{{ recipe.carbs }} г</strong>
+            <br>
+            углеводы
+        </div>
+
+    </div>
+
+    <div class="recipe-section">
+
+        <h2>🥕 Ингредиенты</h2>
+
+        <div class="recipe-text">
+            {{ recipe.ingredients }}
+        </div>
+
+    </div>
+
+    <div class="recipe-section">
+
+        <h2>👨‍🍳 Приготовление</h2>
+
+        <div class="recipe-text">
+            {{ recipe.instructions }}
+        </div>
+
+    </div>
+
+    <br>
+
+    <a
+        class="button"
+        href="{% url 'recipe_update' recipe.id %}"
+    >
+        Редактировать
+    </a>
+
+    <a
+        class="button"
+        href="{% url 'recipe_delete' recipe.id %}"
+    >
+        Удалить
+    </a>
+
+</div>
+
+{% endblock %}

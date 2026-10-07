@@ -1,0 +1,53 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}
+Food Planner
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">Рецепты</h1>
+
+<p class="page-description">
+    Простые рецепты с калорийностью и КБЖУ
+</p>
+
+<div class="recipes">
+
+    {% for recipe in recipes %}
+
+    <div class="card">
+
+        <span class="category">
+            {{ recipe.category.name }}
+        </span>
+
+        <h2>{{ recipe.title }}</h2>
+
+        <p>
+            {{ recipe.description }}
+        </p>
+
+        <div class="info">
+            <span>⏱ {{ recipe.cooking_time }} мин.</span>
+            <span>🔥 {{ recipe.calories }} ккал</span>
+        </div>
+
+        <a
+            class="button"
+            href="{% url 'recipe_detail' recipe.id %}"
+        >
+            Открыть рецепт
+        </a>
+
+    </div>
+
+    {% empty %}
+
+    <p>Рецептов пока нет.</p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
