@@ -24,6 +24,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     instructions = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='recipes/', blank=True, null=True)
 
     def __str__(self):
         return self.title

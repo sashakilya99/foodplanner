@@ -18,6 +18,7 @@ class RecipeForm(forms.ModelForm):
             'carbs',
             'ingredients',
             'instructions',
+            'image',
         ]
 
         widgets = {

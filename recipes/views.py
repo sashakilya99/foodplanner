@@ -15,7 +15,7 @@ def recipe_detail(request, recipe_id):
 
 def recipe_create(request):
     if request.method == 'POST':
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -30,7 +30,7 @@ def recipe_update(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
     if request.method == 'POST':
-        form = RecipeForm(request.POST, instance=recipe)
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
 
         if form.is_valid():
             form.save()
